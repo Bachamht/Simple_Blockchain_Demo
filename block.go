@@ -25,7 +25,7 @@ type Block struct {
 // 创建新区块
 func NewBlock(bc *BlockChain, preBlockHash []byte) *Block {
 	block := &Block{
-		Index:         len(bc.blocks) + 1,
+		Index:         len(bc.blocks),
 		Timestamp:     time.Now().Unix(),
 		PrevBlockHash: preBlockHash,
 		Hash:          []byte{},

@@ -22,16 +22,16 @@ func (bc *BlockChain) AddBlock() {
 
 // 增加交易信息，当交易信息超过100条时候打包成块
 func (bc *BlockChain) NewTransaction(sender, recipient string, amount float64) {
-	if len(bc.CurrentTransactions) >= Tranamount {
-		bc.AddBlock()
-		bc.CurrentTransactions = make([]Transaction, 0)
-	}
 	transaction := Transaction{
 		Sender:    sender,
 		Recipient: recipient,
 		Amount:    amount,
 	}
 	bc.CurrentTransactions = append(bc.CurrentTransactions, transaction)
+	if len(bc.CurrentTransactions) >= Tranamount {
+		bc.AddBlock()
+		bc.CurrentTransactions = make([]Transaction, 0)
+	}
 }
 
 // 返回最后一个区块
